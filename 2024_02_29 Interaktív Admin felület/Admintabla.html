@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Admin tábla</title>
+    <style>
+        body{
+            background-color: rgb(61, 57, 57);
+        }
+        h1{
+            color:white;
+            text-align: left;
+        }
+        .container{
+            background-color: rgb(34, 33, 33);
+            width:500px;
+            border-radius: 10px;
+            padding:15px;
+            margin-top: 20px;
+        }
+        .form-group{
+            color:white;
+            font-weight:bold;
+            
+
+        }
+        .adatFeltolto{
+            box-shadow: 0 5px 5px 0 rgb(0,0,0);
+            background-color: rgb(29, 28, 28);
+            color:white;
+
+        }
+    </style>
+</head>
+<body>
+    <table class="table table-striped table-dark table-hover table-bordered text-center fw-bold ">
+        <caption></caption>
+        <tr>
+            <th>Dolgozó vezetékneve</th>
+            <th>Dolgozó keresztneve</th>
+            <th>E-mail cím</th>
+            <th>Telefonszám</th>
+            <th>Beosztás</th>
+            <th>Aktív állomány</th>
+        </tr>
+        <tr >
+            <td>Békés</td>
+            <td>Csaba</td>
+            <td>bekcsa80@gmail.com</td>
+            <td>123-4567</td>
+            <td>Fullstack fejlesztő</td>
+            <td><input type="checkbox" class="allapot"></td>
+        </tr>
+        <tr>
+            <td>Bármi</td>
+            <td>Áron</td>
+            <td>barmiaron@gmail.com</td>
+            <td>999-9999</td>
+            <td>Projekt leader</td>
+            <td><input type="checkbox" class="allapot"></td>
+        </tr>
+        <tr>
+            <td>Minta</td>
+            <td>Márton</td>
+            <td>mintamarci@gmail.com</td>
+            <td>111-1111</td>
+            <td>Adatbázis tudós</td>
+            <td><input type="checkbox" class="allapot"></td>
+        </tr>
+        <tr>
+            <td>Szikla</td>
+            <td>Szilárd</td>
+            <td>sz-szilard@gmail.com</td>
+            <td>444-5555</td>
+            <td>BackEnd fejlesztő</td>
+            <td><input type="checkbox" class="allapot"></td>
+        </tr>
+        <tr>
+            <td>Dil</td>
+            <td>Emma</td>
+            <td>sz-szilard@gmail.com</td>
+            <td>343-4545</td>
+            <td>FrontEnd fejlesztő</td>
+            <td><input type="checkbox" class="allapot"></td>
+        </tr>
+        <tr>
+            <td>Meg</td>
+            <td>Győző</td>
+            <td>gyozike@gmail.com</td>
+            <td>121-2121</td>
+            <td>SCRUM master</td>
+            <td><input type="checkbox" class="allapot"></td>
+        </tr>
+    </table>
+    <div class="container w-50 text-center">
+        <div class="col ">
+    <button type="button" class="btn btn-success" id="aktivalo">Mindenkit aktivál</button>
+    <button type="button" class="btn btn-info" id="csikozas">Táblázat sávozásának kikapcsolása</button>
+    <button type="button" class="btn btn-light" id="lightMode">Lightmode on</button>
+    <button type="button" class="btn btn-secondary" id="tesztSor">Tesztsor beszúrás</button>
+    </div>
+    </div>
+    <div class="container">
+        <h1>Új céges felhasználó</h1>
+        <form action="" class="has-validation" novalidate onchange="validalas()">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="vezNev">Vezetéknév:</label>
+                        <input type="text" class="form-control vezetNev" id="vezNev" required>
+                        <small class="text-secondary form-text">Dolgozó vezetékneve</small>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="kerNev">Keresztnév:</label>
+                        <input type="text" class="form-control kerNev" id="kerNev"  required">
+                        <div class="valid-feedback">Jó adat</div>
+                        <div class="invalid-feedback">Hibás adat</div>
+                        <small class="text-secondary form-text">Dolgozó keresztneve</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail cím:</label>
+                <input type="email" class="form-control email" id="email" required>
+                <small class="text-secondary form-text">Dolgozó elérhetősége</small>
+            </div>
+
+            <div class="form-group ">
+                <label for="tel">Céges mobilszám:</label>
+                <div class="input-group has-validation">
+                <span class="input-group-text">+36-30</span>
+                <input type="tel" class="form-control tel" id="tel" placeholder="123-4567" required>
+                <div class="valid-feedback">Jó adat</div>
+                <div class="invalid-feedback">Hibás adat</div>
+            </div>
+          
+                <small class="text-secondary form-text">Dolgozó elérhetősége</small>
+        </form>
+            </div>
+            <div class="form-group">
+                <label for="beosztas">Dolgozó beosztása</label>
+                <select id="beosztas" class="form-control">
+                    <option value="Fullstack fejlesztő">Fullstack fejlesztő</option>
+                    <option value="Projekt leader">Projekt leader</option>
+                    <option value="Adatbázis tudós">Adatbázis tudós</option>
+                    <option value="BackEnd fejlesztő">BackEnd fejlesztő</option>
+                    <option value="FrontEnd fejlesztő" selected="selected">FrontEnd fejlesztő</option>
+                    <option value="SCRUM master">SCRUM master</option>
+                </select>
+            </div>
+           <input type="button" class="btn adatFeltolto form-control" value="Adatok feltöltése" onclick="adatFeltolto()">
+            <!--Kénytelen voltam input buttont rakni, mert a button nem végrehajtotta a függvényt, hanem frissítette az oldalt..Erre szeretnék majd magyarázatot :D -->
+
+<script src="AdminFelulet/Admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
